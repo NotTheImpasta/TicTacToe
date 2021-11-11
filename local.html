@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe - Play</title>
+  <link rel="stylesheet" href="/css.css">
+</head>
+<body>
+  <h1>Tic Tac Toe</h1>
+  <h2>It's <a id="turn">loading...</a>'s turn!</h2>
+  <h2><span onclick="clearBoard()">Clear Board</span> | <span onclick="getElement('turn').innerText = ((getElement('turn').innerText == emojis['X']) ? emojis['O'] : emojis['X'])">Skip Turn</span></h2>
+  <div id="board">
+    <span class="tile" id="tile1"></span>
+    <span class="tile" id="tile2"></span>
+    <span class="tile" id="tile3"></span>
+    <br>
+    <span class="tile" id="tile4"></span>
+    <span class="tile" id="tile5"></span>
+    <span class="tile" id="tile6"></span>
+    <br>
+    <span class="tile" id="tile7"></span>
+    <span class="tile" id="tile8"></span>
+    <span class="tile" id="tile9"></span>
+  </div>
+  <h2>How to play</h2>
+  <p>
+    This is a 2 player game where one person is X and one is O. <br>
+    To win, you must get three Xs or Os in a row. <br>
+    This row can be in any direction. <br>
+    Whoever makes a row first wins. <br>
+    You can see the current turn at the top of the screen. <br>
+    Click a 🟨 yellow tile to place an X or an O. <br>
+  </p>
+  <script>
+    const emojis = {
+      "empty": "🟨",
+      "X": "❌",
+      "O": "⭕️"
+    }
+
+    function clearBoard() {
+      document.getElementById("turn").innerText = ((Math.random() < 0.5) ? emojis["O"] : emojis["X"]);
+      document.getElementById("tile1").innerText = emojis["empty"];
+      document.getElementById("tile2").innerText = emojis["empty"];
+      document.getElementById("tile3").innerText = emojis["empty"];
+      document.getElementById("tile4").innerText = emojis["empty"];
+      document.getElementById("tile5").innerText = emojis["empty"];
+      document.getElementById("tile6").innerText = emojis["empty"];
+      document.getElementById("tile7").innerText = emojis["empty"];
+      document.getElementById("tile8").innerText = emojis["empty"];
+      document.getElementById("tile9").innerText = emojis["empty"];
+    }
+
+    clearBoard();
+
+    function winCheck() {
+      
+    } 
+
+    function getElement(id) {
+      return document.getElementById(id);
+    }
+    function click(id) {
+      var loc = getElement(id);
+      var turn = getElement("turn");
+      if (loc.innerText == emojis["empty"]) {
+        document.getElementById(id).innerText = document.getElementById("turn").innerText;
+        turn.innerText = ((turn.innerText == emojis["X"]) ? emojis["O"] : emojis["X"])
+        winCheck();
+      } else {
+        alert("Tile already used!");
+      }
+    }
+    document.getElementById("tile1").onclick = function(){click("tile1")};
+    document.getElementById("tile2").onclick = function(){click("tile2")};
+    document.getElementById("tile3").onclick = function(){click("tile3")};
+    document.getElementById("tile4").onclick = function(){click("tile4")};
+    document.getElementById("tile5").onclick = function(){click("tile5")};
+    document.getElementById("tile6").onclick = function(){click("tile6")};
+    document.getElementById("tile7").onclick = function(){click("tile7")};
+    document.getElementById("tile8").onclick = function(){click("tile8")};
+    document.getElementById("tile9").onclick = function(){click("tile9")};
+  </script>
+</body>
+</html>

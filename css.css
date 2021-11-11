@@ -1,0 +1,10 @@
+body {
+  color: darkslategrey;
+  background-color: beige;
+  text-align: center;
+  font-family: Tahoma, sans-serif;
+}
+
+span {
+  cursor: pointer;
+}
